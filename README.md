@@ -1,4 +1,4 @@
-# An example of how to configure dagster graphs at runtime using a python script to create a yaml file
+An example of how to configure dagster graphs at runtime using a python script to create a yaml file
 
 # Create a virtual environment and install requirements with
 
