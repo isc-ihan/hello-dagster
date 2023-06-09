@@ -2,7 +2,7 @@ import os
 import script
 import yaml
 
-from dagster import DependencyDefinition, GraphDefinition, NodeInvocation, op
+from dagster import DependencyDefinition, GraphDefinition, NodeInvocation, RunConfig, op
 
 
 @op
@@ -23,7 +23,7 @@ def add(left: int, right: int) -> int:
 def construct_graph_with_yaml(yaml_file, op_defs) -> GraphDefinition:
     stream = open(yaml_file, "r")
     yaml_data = yaml.load_all(stream, Loader=yaml.FullLoader)
-    yaml_dict = list(yaml_data).pop().pop()
+    yaml_dict = list(yaml_data).pop()
     assert isinstance(yaml_dict, dict)
 
     deps = {}
@@ -58,4 +58,4 @@ local_job = define_dep_dsl_graph().to_job()
 # execute job with an initial input of [num] as 0
 if __name__ == "__main__":
     job_result = local_job.execute_in_process(
-        {'ops': {'A': {'inputs': {'num': 0}}}})
+        run_config=RunConfig({'A': {'inputs': {'num': 0}}}))
