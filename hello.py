@@ -58,4 +58,4 @@ local_job = define_dep_dsl_graph().to_job()
 # execute job with an initial input of [num] as 0
 if __name__ == "__main__":
     job_result = local_job.execute_in_process(
-        run_config=RunConfig({'A': {'inputs': {'num': 0}}}))
+        run_config=RunConfig(script.get_config()))

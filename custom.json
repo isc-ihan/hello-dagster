@@ -1,39 +1,48 @@
 {
-    "description": "example_yaml",
-    "name": "some_example",
-    "ops": [
-      {
-        "alias": "A",
-        "def": "add_one"
-      },
-      {
-        "alias": "B",
-        "def": "add_one",
-        "deps": {
-          "num": {
-            "op": "A"
+    "graph": {
+      "description": "example_yaml",
+      "name": "some_example",
+      "ops": [
+        {
+          "alias": "A",
+          "def": "add_one"
+        },
+        {
+          "alias": "B",
+          "def": "add_one",
+          "deps": {
+            "num": {
+              "op": "A"
+            }
+          }
+        },
+        {
+          "alias": "C",
+          "def": "add_two",
+          "deps": {
+            "num": {
+              "op": "A"
+            }
+          }
+        },
+        {
+          "def": "add",
+          "deps": {
+            "left": {
+              "op": "B"
+            },
+            "right": {
+              "op": "C"
+            }
           }
         }
-      },
-      {
-        "alias": "C",
-        "def": "add_two",
-        "deps": {
-          "num": {
-            "op": "A"
-          }
-        }
-      },
-      {
-        "def": "add",
-        "deps": {
-          "left": {
-            "op": "B"
-          },
-          "right": {
-            "op": "C"
-          }
+      ]
+    },
+    "run_config": {
+      "A": {
+        "inputs": {
+          "num": 0
         }
       }
-    ]
+    }
   }
