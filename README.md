@@ -5,6 +5,12 @@ An example of how to configure dagster graphs at runtime using a python script t
 - 'python3 -m venv venv'
 - 'pip3 install -r requirements.txt'
 
-# open ui with
+# run a job
+
+using ui:
 
 - 'dagster dev -f hello.py'
+
+locally:
+
+- 'python3 hello.py'
