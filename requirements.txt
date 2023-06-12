@@ -1,2 +1,4 @@
 dagit==1.3.9
 dagster==1.3.9
+ruff==0.0.272
+termcolor==2.3.0
