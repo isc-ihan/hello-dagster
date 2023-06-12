@@ -2,7 +2,7 @@ import os
 import script
 import yaml
 
-from dagster import DependencyDefinition, GraphDefinition, NodeInvocation, RunConfig, op
+from dagster import DependencyDefinition, GraphDefinition, NodeInvocation, RunConfig, op  # noqa: E501
 
 
 @op
@@ -59,3 +59,5 @@ local_job = define_dep_dsl_graph().to_job()
 if __name__ == "__main__":
     job_result = local_job.execute_in_process(
         run_config=RunConfig(script.get_config()))
+    assert job_result.success
+    assert job_result.output_for_node("add") == 5
